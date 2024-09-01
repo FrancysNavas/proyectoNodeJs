@@ -1,0 +1,340 @@
+/*CLASE 9. FLEXBOX Y MEDIA QUERIES*/
+:root{
+    
+    --bg-color:#f5fafb;
+    --primary-color:#419f36;
+    --secondary-color:#ffc098;
+    --third-color:#db4648;
+    --third-bis-color:#db4648f2;
+    --bg-input-color:#4f31572c;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+} 
+html {
+    /* font-family: Arial, Helvetica, sans-serif; */
+    font-weight: bolder;
+    background-color: var(--bg-color);
+    
+}
+
+header {
+    /* height: 10vh; */
+    padding: 2vh 0;
+    /* box-shadow: 0px 8px 16px 0px rgba(134, 183, 240, 0.2); */
+    background:  linear-gradient(to right, #2e86ef, #2bb01d);
+
+} 
+
+nav {
+    display: flex;
+    /* justify-content: space-between; */
+    align-items: center;
+    color: white;
+    
+  }
+
+  nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+
+  }
+
+  nav ul li{
+    display: inline-block;
+    text-align: right;
+    
+  }
+
+  /* Pseudoclases es un selector que marca los elementos que están en un estado específico 
+  first-child: significa primer hijo */
+  nav ul li:first-child {
+    margin-left: 0;
+    
+  }
+
+  nav ul li:last-child {
+    margin-right: 1vw;
+  }
+
+  nav>a {
+    font-family: "Oregano", cursive;
+
+  }
+
+  nav ul li a, nav>a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: var(--secondary-color);
+    transition: background-color 0.3s;
+    border-radius: 20px;
+
+  }
+  /* Cambio de color al pasar el mouse sobre los enlaces */
+  /* :hover permite aplicar estilos especiales a un elemento 
+  cuando se encuentra en un estado específico, como cuando el cursor se coloca sobre él  */
+
+  nav ul li a:hover{
+    background-color: white;
+    color: rgb(53, 166, 58);
+    border-radius: 20px;
+  }
+
+.img-card {
+  height: 300px;
+  width: 300px;
+
+}
+
+.card{
+  height: 100%;
+ margin-left: 15%;
+}
+
+#centros{
+  align-content: center;
+  
+}
+
+footer {
+    /* background-color: rgb(37, 117, 221); */
+    background:  linear-gradient(to right, #2e86ef, #2bb01d);
+
+    height: 10vh;
+    /*damos valor de flexible al padre*/
+    display: flex; /*con esto ya es capaz de moverse a donde se le indique*/
+    justify-content: center; /*con esto centra horizontalemnte los elementos*/
+    align-items: center; /*centra verticalmente el elemento*/
+    color: white;
+}
+ /*Estilos de las cajitas del main
+ .container {
+    /*predisponemos a los hijos al comportamiento flexible
+    display: flex;
+    flex-direction: row;  es la direccion del eje principal por defecto
+    flex-wrap: nowrap; /*rompe la formacion y permite un reordenamiento
+    justify-content: space-around; /*distribuye el espacio horizontalemente
+    align-items: center;
+    height: 100%;
+    background-color: rgb(186, 229, 246);
+
+ }
+
+ /*estilos por las cajitas individuales
+ .item {
+    height: 50px;
+    width: 50px;
+    border: 2px solid black;
+    background-color: lightgray;
+    /*comportamiento flexible d elos hijos
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+ }*/
+
+ .img-logo {
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+ }
+
+ /* Css de las cards de ayuda */
+ article {
+  --img-scale: 1.001;
+  --title-color: black;
+  --link-icon-translate: -20px;
+  --link-icon-opacity: 0;
+  position: relative;
+  border-radius: 16px;
+  box-shadow: none;
+  background: #effcfc;
+  transform-origin: center;
+  transition: all 0.4s ease-in-out;
+  overflow: hidden;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+article a::after {
+  position: absolute;
+  inset-block: 0;
+  inset-inline: 0;
+  cursor: pointer;
+  content: "";
+}
+
+/* basic article elements styling */
+article h2 {
+  margin: 0 0 18px 0;
+  /* font-family: "Bebas Neue", cursive; */
+  font-size: 1.9rem;
+  letter-spacing: 0.06em;
+  color: var(--title-color);
+  transition: color 0.3s ease-out;
+}
+
+figure {
+  margin: 10px;
+  padding: 10px 70px;
+  /* aspect-ratio: 16 / 9; */
+  overflow: hidden;
+  align-content: center;
+}
+
+article img {
+  max-width: 100%;
+  
+  transform-origin: center;
+  transform: scale(var(--img-scale));
+  transition: transform 0.4s ease-in-out;
+}
+
+.article-body {
+  padding: 24px;
+}
+
+article a {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  color: #28666e;
+}
+
+article a:focus {
+  outline: 1px dotted #28666e;
+}
+
+article a .icon {
+  min-width: 24px;
+  width: 24px;
+  height: 24px;
+  margin-left: 5px;
+  transform: translateX(var(--link-icon-translate));
+  opacity: var(--link-icon-opacity);
+  transition: all 0.3s;
+}
+
+/* using the has() relational pseudo selector to update our custom properties */
+article:has(:hover, :focus) {
+  --img-scale: 1.1;
+  --title-color: #28666e;
+  --link-icon-translate: 0;
+  --link-icon-opacity: 1;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+}
+
+
+/************************ 
+Generic layout (demo looks)
+**************************/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* body {
+  margin: 0;
+  padding: 48px 0;
+  font-family: "Figtree", sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+  background-image: linear-gradient(45deg, #7c9885, #b5b682);
+  min-height: 100vh;
+} */
+
+.articles {
+  display: grid;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+@media screen and (max-width: 960px) {
+  article {
+    container: card/inline-size;
+  }
+  .article-body p {
+    display: none;
+  }
+}
+
+@container card (min-width: 380px) {
+  .article-wrapper {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 16px;
+  }
+  .article-body {
+    padding-left: 0;
+  }
+  figure {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+  figure img {
+    height: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+}
+
+.sr-only:not(:focus):not(:active) {
+  clip: rect(0 0 0 0); 
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap; 
+  width: 1px;
+}
+
+ /* --------------------------------- */
+
+ /*media queries para pantallas 600px y 780px*/
+ @media only screen and (max-width: 600px){
+    .container {
+        flex-direction: column;
+    }
+
+    
+    .card{
+      height: 100%;
+     margin-right: 15%;
+     text-align: center;
+    }
+    .img-card {
+      height: 100px;
+      width: 150px;
+    }
+
+    figure>img {
+      width: 100px;
+    }
+ }
+
+  /*media queries para pantallas 601px hasta 768px*/
+  @media only screen and (min-width: 601px) and (max-width: 768px){
+    .container {
+        align-items: center;
+    }
+    .card{
+      height: 100%;
+     margin-right: 15%;
+     text-align: center;
+    }
+    .img-card {
+      height: 100px;
+      width: 150px;
+    }
+ }
